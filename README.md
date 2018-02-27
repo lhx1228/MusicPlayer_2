@@ -1,11 +1,4 @@
-﻿---
-title: python实现简易音乐播放器②
-date: 2018-02-27
-tags: python
-categories: python
----
-
-# python实现简易音乐播放器②
+﻿# python实现简易音乐播放器②
 
 ---
 
