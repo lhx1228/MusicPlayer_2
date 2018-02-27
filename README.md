@@ -40,7 +40,8 @@ win10
 
 ## 代码运行方法
 
-将全部文件[下载](https://github.com/lhx1228/MusicPlayer)下来，放入同一个文件运行`start.py`即可。
+将全部文件[下载](https://github.com/lhx1228/MusicPlayer_2)下来，放入同一个文件运行`start.py`即可。
 
+PS:代码中有路径的部分可以修改为自己的代码存放路径
 
 
