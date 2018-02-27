@@ -1,6 +1,7 @@
 import tkinter,os,pygame
 from subprocess import run
 from tkinter import *
+from tkinter import filedialog
 from pygame import *
 
 flag = 0
@@ -22,7 +23,10 @@ def run_songID():
     ly_flag = 1
     #print(e1.get())
     run('python C:/Users/Lhx/Desktop/Python/MusicPlayer/版本2.0/get_songID.py {}'.format(e1.get()),shell=True)
-    MP3towav()
+    if os.path.exists('{}.wav'.format(e1.get())):
+        playMusic()
+    else:
+        MP3towav()
     
 def playMusic():
     pygame.mixer.init()
@@ -87,6 +91,7 @@ def Init():
     S.config(command=textLyric.yview)
     textLyric.config(yscrollcommand=S.set)
     adjust()
+    menu()
 
 def print_lyrics():
     frame= tkinter.Frame(master)
@@ -105,16 +110,34 @@ def print_lyrics():
 
     textLyric.insert(END, lyrics)
 
+def OpenFile():
+    f = filedialog.askopenfilename(title='打开文件', filetypes=[('Music', '*.wav'), ('All Files', '*')])
+    #print(f)
+    pygame.mixer.init()
+    pygame.mixer.music.load('{}'.format(f))
+    pygame.mixer.music.play()
+
+def menu():
+    menubar = Menu(master)
+    filemenu = Menu(menubar, tearoff=0)
+    filemenu.add_command(label="Open", command=OpenFile)
+    # filemenu.add_separator()#分割线
+    menubar.add_cascade(label="File", menu=filemenu)
+    master.config(menu=menubar)
+
+    #mainloop()
+
 
 if __name__ == '__main__':
     os.chdir('C:/Users/Lhx/Desktop/Python/MusicPlayer/版本2.0/')
-    if run('dir /B *.wav',shell=True):
+    if run('dir /B /A *.wav',shell=True):
+        run('attrib *.wav -s -h',shell=True)
         run('del *.wav',shell=True)
     master = tkinter.Tk()
     master.title('Music Player')
     master.geometry("700x500+200+100")
     Input_songName()
     Init()
-    master.mainloop()
+    #master.mainloop()
 
 
