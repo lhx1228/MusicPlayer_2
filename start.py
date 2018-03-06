@@ -103,24 +103,6 @@ def Init():
     menu()
 
 
-def print_lyrics():
-    frame = tkinter.Frame(master)
-    frame.pack(side=tkinter.TOP, fill=tkinter.Y)
-    S = tkinter.Scrollbar(frame)
-    textLyric = tkinter.Text(frame, bg="#FFFFFF", height=50)
-    S.pack(side=RIGHT, fill=Y)
-    textLyric.pack(side=LEFT, fill=Y)
-    S.config(command=textLyric.yview)
-    textLyric.config(yscrollcommand=S.set)
-    with open('C:/Users/Lhx/Desktop/Python/MusicPlayer/版本2.0/lyrics.txt', 'r') as file:
-        lyrics_text = file.read()
-    lyrics = '''
-    {}
-    '''.format(lyrics_text)
-
-    textLyric.insert(END, lyrics)
-
-
 def OpenFile():
     f = filedialog.askopenfilename(title='打开文件', filetypes=[
                                    ('Music', '*.wav'), ('All Files', '*')])
